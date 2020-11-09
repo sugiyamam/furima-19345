@@ -1,24 +1,28 @@
-# README
+# furima-19345 DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
 
-Things you may want to cover:
+### Association
+- 
+- 
+- 
 
-* Ruby version
+## itemテーブル
+|Column|Type|Options|
+|------|----|-------|
 
-* System dependencies
+### Association
+- 
+- 
+- 
 
-* Configuration
+## buyテーブル
+|Column|Type|Options|
+|------|----|-------|
 
-* Database creation
+### Association
+- 
+- 
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
