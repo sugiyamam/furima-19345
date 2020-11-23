@@ -3,57 +3,60 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nick name|string|null :false|
-|mail address|string|null: false|
-|password|string|null: false|
-|name|string|null :false|
-|kananame|string|null :false|
-|date of birth|string|null :false|
+|nick_name|string|null :false|
+|mail_address|string|null: false|
+|encrypted_password|string|null: false|
+|family_name|string|null :false|
+|first_name|string|null :false|
+|kana_family_name|string|null :false|
+|kana_first_name|string|null :false|
+|date_of_birth|date|null :false|
 
 ### Association
 - has_many :items
 - has_many :buys
 
+
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item name|string|null :false|
-|item description|text|null :false|
-|item category(active_hash)|string|null :false|
-|item stasus(active_hash)|string|null :false|
-|delivery price(active_hash)|integer|null: false|
-|ship-from address(active_hash)|string|null: false|
-|delivery time(active_hash)|integer|null: false|
-|item price|integer|null: false|
-|user_id|integer|null: false, foreign_key: true|
-
+|name|string|null :false|
+|description|text|null :false|
+|category_id|integer|null :false|
+|stasus_id|integer|null :false|
+|delivery_price_id|integer|null: false|
+|ship-from_address_id|integer|null: false|
+|delivery_time_id|integer|null: false|
+|price|integer|null: false|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
+- has_one :buy
+
 
 ## buysテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item name|string|null :false|
-|item price|integer|null: false|
-|payment amount|string|null: false|
-
+|user|references|null: false, foreign_key: true|
+|item|references|null :false, foreign_key: true|
 
 ### Association
 - belongs_to :user
+- belongs_to :item
 - has_one :delivery
+
 
 ## deliverysテーブル
 |Column|Type|Options|
 |------|----|-------|
-|postal code|string|null: false|
-|prefectures|string|null: false|
+|postal_code|string|null: false|
+|prefecture_id|integer|null: false|
 |municipality|string|null: false|
-|house number|string|null: false|
-|building name|string||
-|phone number|string|null: false|
-|buy_id|integer|null: false, foreign_key: true|
-
+|house_number|string|null: false|
+|building_name|string||
+|phone_number|string|null: false|
+|buy_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :buy
