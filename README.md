@@ -46,7 +46,7 @@
 ## deliverysテーブル
 |Column|Type|Options|
 |------|----|-------|
-|postal_code|string|null: false|
+|postal code|string|null: false|
 |prefectures|string|null: false|
 |municipality|string|null: false|
 |house number|string|null: false|
