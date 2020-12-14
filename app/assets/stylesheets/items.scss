@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+.top-page-header {
+  width: 100vw;
+  padding: 2vh 15vw;
+  display: flex;
+  flex-direction: column;
+  .search-bar-contents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      text-decoration: none;
+      .furima-icon {
+        width: 10vw;
+        margin-right: 10vw;
+      }
+    }
+    .search-form {
+      width: 65vw;
+      height: 5vh;
+      display: flex;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+
