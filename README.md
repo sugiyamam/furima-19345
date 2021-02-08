@@ -23,7 +23,7 @@
 |name|string|null :false|
 |description|text|null :false|
 |category_id|integer|null :false|
-|stasus_id|integer|null :false|
+|status_id|integer|null :false|
 |delivery_price_id|integer|null: false|
 |prefecture_id|integer|null: false|
 |delivery_time_id|integer|null: false|
