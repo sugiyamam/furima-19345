@@ -16,11 +16,11 @@ class Item < ApplicationRecord
   validates :delivery_price_id, presence: true
   validates :prefecture_id, presence: true
   validates :delivery_time_id, presence: true 
-  validates :price, presence: true
-
+  
   validates :category_id, numericality: { other_than: 1 }
   validates :status_id, numericality: { other_than: 1 }
   validates :delivery_price_id, numericality: { other_than: 1 }
   validates :prefecture_id, numericality: { other_than: 1 }
   validates :delivery_time_id, numericality: { other_than: 1 }
+  validates :price, numericality: { greater_than_or_equal_to: 300 }
 end

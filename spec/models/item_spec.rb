@@ -26,39 +26,39 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
       it 'description:未入力' do
-        @item.email = ''
+        @item.description = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Description is invalid")
+        expect(@item.errors.full_messages).to include("Description can't be blank")
       end
       it 'category_id:未入力' do
-        @item.password = 1
+        @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
       it 'status_id:未入力' do
-        @item.password = 1
+        @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status can't be blank")
+        expect(@item.errors.full_messages).to include("Status must be other than 1")
       end
       it 'delivery_price_id:未入力' do
-        @item.password = 1
+        @item.delivery_price_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery price can't be blank")
+        expect(@item.errors.full_messages).to include("Delivery price must be other than 1")
       end
       it 'prefecture_id:未入力' do
-        @item.password = 1
+        @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
       it "delivery_time_id:未入力" do
-        @item.password = 1
+        @item.delivery_time_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery time can't be blank")
+        expect(@item.errors.full_messages).to include("Delivery time must be other than 1")
       end
-      it "price:未入力" do
-        @item.password = 300
+      it "price:300未満の数値入力" do
+        @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
     end
   end
