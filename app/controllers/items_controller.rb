@@ -17,8 +17,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to root_path }
       end
     else
-      @item = Item.new.includes(:user)
-      render :index
+      render :new
     end
   end
 
@@ -28,7 +27,4 @@ class ItemsController < ApplicationController
     :category_id, :status_id, :delivery_price_id, :prefecture_id, 
     :delivery_time_id, :price).merge(user_id: current_user.id)
   end
-
-
-  
 end
