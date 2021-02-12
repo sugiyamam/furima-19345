@@ -9,7 +9,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品機能'
     context 'うまくいく場合' do
-      it 'プルダウンを選択すれば入力可能' do
+      it '全て入力されていれば出品できる' do
           expect(@item).to be_valid
       end
     end
@@ -33,32 +33,37 @@ RSpec.describe Item, type: :model do
       it 'category_id:未入力' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include("Category is invalid. Category Select.")
       end
       it 'status_id:未入力' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status must be other than 1")
+        expect(@item.errors.full_messages).to include("Status is invalid. Status Select.")
       end
       it 'delivery_price_id:未入力' do
         @item.delivery_price_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery price must be other than 1")
+        expect(@item.errors.full_messages).to include("Delivery price is invalid. Delivery Price Select.")
       end
       it 'prefecture_id:未入力' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@item.errors.full_messages).to include("Prefecture is invalid. Prefecture Select.")
       end
       it "delivery_time_id:未入力" do
         @item.delivery_time_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery time must be other than 1")
+        expect(@item.errors.full_messages).to include("Delivery time is invalid. Delivery Time Select.")
       end
       it "price:300未満の数値入力" do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include("Price is invalid. Price Out of setting range")
+      end
+      it "price:金額が半角以外" do
+        @item.price = "２９９"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid. Price Out of setting range")
       end
     end
   end

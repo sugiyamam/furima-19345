@@ -1,9 +1,7 @@
 class ItemsController < ApplicationController
-  # before_action :set_item, only: [:edit, :show]
   before_action :authenticate_user!, only: [:new]
 
   def index
-    @items = Item.all
   end
 
   def new
@@ -13,9 +11,8 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      respond_to do |format|
-        format.html { redirect_to root_path }
-      end
+      format.html { redirect_to root_path }
+    end
     else
       render :new
     end
@@ -27,4 +24,3 @@ class ItemsController < ApplicationController
     :category_id, :status_id, :delivery_price_id, :prefecture_id, 
     :delivery_time_id, :price).merge(user_id: current_user.id)
   end
-end
