@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+         has_many :items
+
   validates :nickname, presence: true, length: { maximum: 40 }
   validates :password, presence: true, format: { with: /\A[a-z\d]{6,100}+\z/i, message: "is invalid. Password Include both letters and numbers" }
   validates :family_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "is invalid. Input full-width kanji hiragana katakana characters" }
