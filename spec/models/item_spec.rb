@@ -55,6 +55,21 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery time is invalid")
       end
+      it "price:金額が未入力で空白" do
+        @item.price = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
+      it "price:半角英数混合で入力" do
+        @item.price = 'a1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
+      it "price:半角英語のみで入力" do
+        @item.price = 'aA'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
       it "price:金額が300未満の数値入力" do
         @item.price = 299
         @item.valid?
