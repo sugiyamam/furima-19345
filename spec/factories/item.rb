@@ -9,7 +9,6 @@ FactoryBot.define do
     prefecture_id          {2}
     delivery_time_id       {2}
     price                  {300}
-    price                  {/\A[0-9]+\z/}
     association :user
     after(:build) do |item|
       item.image.attach(io: File.open('public/images/test_image.jpeg'), filename: 'test_image.png')
