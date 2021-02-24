@@ -2,18 +2,17 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   describe '#create' do
+    before do
+      @item = FactoryBot.build(:item)
+    end
 
-  before do
-    @item = FactoryBot.build(:item)
-  end
-
-  describe '商品出品機能'
+    describe '商品出品機能'
     context 'うまくいく場合' do
       it '全て入力されていれば出品できる' do
-          expect(@item).to be_valid
+        expect(@item).to be_valid
       end
     end
-    
+
     context 'うまくいかない場合' do
       it 'image:ファイル未選択' do
         @item.image = nil
@@ -33,57 +32,57 @@ RSpec.describe Item, type: :model do
       it 'category_id:未入力' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category is invalid")
+        expect(@item.errors.full_messages).to include('Category is invalid')
       end
       it 'status_id:未入力' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status is invalid")
+        expect(@item.errors.full_messages).to include('Status is invalid')
       end
       it 'delivery_price_id:未入力' do
         @item.delivery_price_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery price is invalid")
+        expect(@item.errors.full_messages).to include('Delivery price is invalid')
       end
       it 'prefecture_id:未入力' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture is invalid")
+        expect(@item.errors.full_messages).to include('Prefecture is invalid')
       end
-      it "delivery_time_id:未入力" do
+      it 'delivery_time_id:未入力' do
         @item.delivery_time_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery time is invalid")
+        expect(@item.errors.full_messages).to include('Delivery time is invalid')
       end
-      it "price:金額が未入力で空白" do
+      it 'price:金額が未入力で空白' do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
-      it "price:半角英数混合で入力" do
+      it 'price:半角英数混合で入力' do
         @item.price = 'a1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
-      it "price:半角英語のみで入力" do
+      it 'price:半角英語のみで入力' do
         @item.price = 'aA'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
-      it "price:金額が300未満の数値入力" do
+      it 'price:金額が300未満の数値入力' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
-      it "price:金額が半角以外" do
-        @item.price = "２９９"
+      it 'price:金額が半角以外' do
+        @item.price = '２９９'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
-      it "price:金額が10000000以上の数値入力" do
-        @item.price = 10000000
+      it 'price:金額が10000000以上の数値入力' do
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include('Price is invalid')
       end
     end
   end
