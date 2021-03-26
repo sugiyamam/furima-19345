@@ -6,8 +6,31 @@ RSpec.describe BuysForm, type: :model do
       @buys_form = FactoryBot.build(:buys_form)
     end
 
-    it 'すべての値が正しく入力されていれば保存できること' do
+    it "すべての値が正しく入力されていれば保存できること" do
       expect(@buys_form).to be_valid
+    end
+    it "tokenがあれば保存ができること" do
+      expect(@buys_form).to be_valid
+    end
+    it "tokenが空では登録できないこと" do
+      @buys_form.token = nil
+      @buys_form.valid?
+      expect(@buys_form.errors.full_messages).to include("Token can't be blank")
+    end
+    it "exp_monthが空では保存できないこと" do
+      @buys_form.exp_month = ''
+      @buys_form.valid?
+      expect(@buys_form.errors.full_messages).to include("Exp month can't be blank")
+    end
+    it "exp_yearが空では保存できないこと" do
+      @buys_form.exp_year = ''
+      @buys_form.valid?
+      expect(@buys_form.errors.full_messages).to include("Exp year can't be blank")
+    end
+    it "cvcが空では保存できないこと" do
+      @buys_form.cvc = ''
+      @buys_form.valid?
+      expect(@buys_form.errors.full_messages).to include("Cvc can't be blank")
     end
     it 'postal_codeが空だと保存できないこと' do
       @buys_form.postal_code = ''
@@ -46,7 +69,7 @@ RSpec.describe BuysForm, type: :model do
     it 'phone_numberが全角数字だと保存できないこと' do
       @buys_form.phone_number = '０９０１２３４５６７８'
       @buys_form.valid?
-      expect(@buys_form.errors.full_messages).to include("Phone number Input only number")
+      expect(@buys_form.errors.full_messages).to include("Phone number Input only half-width number")
     end
   end
 end
