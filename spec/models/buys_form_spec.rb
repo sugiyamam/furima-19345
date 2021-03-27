@@ -17,21 +17,6 @@ RSpec.describe BuysForm, type: :model do
       @buys_form.valid?
       expect(@buys_form.errors.full_messages).to include("Token can't be blank")
     end
-    it "exp_monthが空では保存できないこと" do
-      @buys_form.exp_month = ''
-      @buys_form.valid?
-      expect(@buys_form.errors.full_messages).to include("Exp month can't be blank")
-    end
-    it "exp_yearが空では保存できないこと" do
-      @buys_form.exp_year = ''
-      @buys_form.valid?
-      expect(@buys_form.errors.full_messages).to include("Exp year can't be blank")
-    end
-    it "cvcが空では保存できないこと" do
-      @buys_form.cvc = ''
-      @buys_form.valid?
-      expect(@buys_form.errors.full_messages).to include("Cvc can't be blank")
-    end
     it 'postal_codeが空だと保存できないこと' do
       @buys_form.postal_code = ''
       @buys_form.valid?

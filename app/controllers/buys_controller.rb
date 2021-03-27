@@ -22,7 +22,7 @@ class BuysController < ApplicationController
   def buy_params
     params.require(:buys_form).permit(:postal_code,
                                 :prefecture_id, :municipality, :house_number, 
-                                :building_name, :phone_number).merge(user_id: current_user.id, item_id: current_user.id, token: params[:token])
+                                :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def pay_item
