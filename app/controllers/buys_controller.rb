@@ -21,9 +21,7 @@ class BuysController < ApplicationController
 
   private
   def set_buys
-    @item = Item.find(params[:item_id])
-    @buy = Buy.find(params[:item_id])
-    return redirect_to root_path if @item.buy.present? or current_user.id == @item.user_id
+    return redirect_to root_path if @item.buy.present? || current_user.id == @item.user_id
   end
 
   def set_item

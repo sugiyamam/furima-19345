@@ -8,8 +8,10 @@ class BuysForm
     validates :prefecture_id, numericality: { other_than: 1, message: "Select" }
     validates :municipality
     validates :house_number
-    validates :phone_number, format: { with: /\A\d{11}\z/, message: "Input only half-width number" }
-    
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: "Input only half-width number" }
+    validates :item_id
+    validates :user_id
+
   end
   
   def save
