@@ -5,7 +5,6 @@ class BuysController < ApplicationController
 
   def index
     @buy = BuysForm.new
-    return redirect_to root_path if current_user.id == @item.user_id
   end
 
   def create
