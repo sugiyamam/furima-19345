@@ -58,6 +58,16 @@ RSpec.describe BuysForm, type: :model do
         @buys_form.valid?
         expect(@buys_form.errors.full_messages).to include("Phone number Input only half-width number")
       end
+      it 'item_idが空の場合' do
+        @buys_form.item_id = ''
+        @buys_form.valid?
+        expect(@buys_form.errors.full_messages).to include("Item can't be blank")
+      end
+      it 'user_idが空の場合' do
+        @buys_form.user_id = ''
+        @buys_form.valid?
+        expect(@buys_form.errors.full_messages).to include("User can't be blank")
+      end
     end
   end
 end
