@@ -1,5 +1,6 @@
 # furima-19345 DB設計
 
+
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
